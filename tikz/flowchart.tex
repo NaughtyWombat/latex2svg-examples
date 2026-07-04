@@ -1,0 +1,7 @@
+\begin{tikzpicture}[node distance=1.6cm]
+  \node[draw,rounded corners] (a) {Input};
+  \node[draw,rounded corners,right of=a] (b) {Render};
+  \node[draw,rounded corners,right of=b] (c) {Export};
+  \draw[->] (a) -- (b);
+  \draw[->] (b) -- (c);
+\end{tikzpicture}

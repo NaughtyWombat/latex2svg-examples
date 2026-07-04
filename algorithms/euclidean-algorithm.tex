@@ -1,0 +1,12 @@
+\begin{algorithm}
+\caption{Euclidean Algorithm}
+\begin{algorithmic}[1]
+\STATE Input integers $a$ and $b$
+\WHILE{$b \ne 0$}
+  \STATE Set $r \gets a \bmod b$
+  \STATE Set $a \gets b$
+  \STATE Set $b \gets r$
+\ENDWHILE
+\RETURN $a$
+\end{algorithmic}
+\end{algorithm}
