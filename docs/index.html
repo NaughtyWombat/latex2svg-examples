@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LaTeX2SVG Examples Gallery</title>
+    <meta
+      name="description"
+      content="Example LaTeX snippets for rendering equations, TikZ diagrams, tables, algorithms, and theorem blocks as SVG with LaTeX2SVG."
+    />
+    <link rel="canonical" href="https://naughtywombat.github.io/latex2svg-examples/" />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f9fb;
+        --panel: #ffffff;
+        --ink: #14171f;
+        --muted: #5a6475;
+        --line: #dce3ed;
+        --accent: #2454d6;
+        --accent-2: #0f8f74;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .shell {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 56px;
+      }
+
+      .hero {
+        padding: 48px 0 28px;
+      }
+
+      .eyebrow {
+        color: var(--accent);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        margin: 0 0 12px;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 6vw, 4.8rem);
+        line-height: 0.95;
+        margin: 0;
+        max-width: 820px;
+      }
+
+      .hero p {
+        color: var(--muted);
+        font-size: 1.12rem;
+        max-width: 760px;
+        margin: 22px 0 0;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .button {
+        align-items: center;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--ink);
+        display: inline-flex;
+        font-weight: 700;
+        min-height: 42px;
+        padding: 9px 14px;
+        text-decoration: none;
+      }
+
+      .button.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #ffffff;
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        margin-top: 28px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        overflow: hidden;
+      }
+
+      .preview {
+        align-items: center;
+        background: #fbfcfe;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: center;
+        min-height: 170px;
+        padding: 24px;
+      }
+
+      .preview img {
+        height: auto;
+        max-height: 130px;
+        max-width: 100%;
+      }
+
+      .card-body {
+        padding: 18px;
+      }
+
+      .type {
+        color: var(--accent-2);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        margin: 0 0 8px;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        font-size: 1.15rem;
+        line-height: 1.2;
+        margin: 0;
+      }
+
+      .card p {
+        color: var(--muted);
+        margin: 10px 0 16px;
+      }
+
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .links a {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        font-size: 0.92rem;
+        font-weight: 700;
+        padding: 7px 10px;
+        text-decoration: none;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        margin-top: 40px;
+        padding-top: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">LaTeX2SVG Examples</p>
+        <h1>LaTeX snippets rendered as clean SVG assets.</h1>
+        <p>
+          Browse copy-paste examples for equations, TikZ diagrams, tables, algorithms,
+          and theorem blocks. Use them with LaTeX2SVG to export SVG, PNG, or PDF.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="https://latex2svg.com/latex-to-svg">Open LaTeX To SVG</a>
+          <a class="button" href="https://latex2svg.com/guides/latex-to-svg">Read The Guide</a>
+          <a class="button" href="https://github.com/NaughtyWombat/latex2svg-examples">View On GitHub</a>
+        </div>
+      </section>
+
+      <section class="grid" aria-label="Example gallery">
+        <article class="card">
+          <div class="preview">
+            <img src="../previews/e-mc2.svg" alt="Rendered E equals mc squared equation" />
+          </div>
+          <div class="card-body">
+            <p class="type">Equation To SVG</p>
+            <h2>Mass-energy equation</h2>
+            <p>A compact formula snippet for slides, notes, and documentation.</p>
+            <div class="links">
+              <a href="../equations/e-mc2.tex">Source</a>
+              <a href="https://latex2svg.com/equation-to-svg">Render Equations</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="preview">
+            <img src="../previews/flowchart.svg" alt="Rendered TikZ flowchart" />
+          </div>
+          <div class="card-body">
+            <p class="type">TikZ To SVG</p>
+            <h2>Flowchart</h2>
+            <p>A focused TikZ process diagram for documentation and technical figures.</p>
+            <div class="links">
+              <a href="../tikz/flowchart.tex">Source</a>
+              <a href="https://latex2svg.com/tikz-to-svg">Render TikZ</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="preview">
+            <img src="../previews/booktabs-comparison.svg" alt="Rendered booktabs table" />
+          </div>
+          <div class="card-body">
+            <p class="type">Table To SVG</p>
+            <h2>Booktabs comparison table</h2>
+            <p>A publication-style table snippet for reports and research figures.</p>
+            <div class="links">
+              <a href="../tables/booktabs-comparison.tex">Source</a>
+              <a href="https://latex2svg.com/latex-table-to-svg">Render Tables</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="preview">
+            <img src="../previews/euclidean-algorithm.svg" alt="Rendered Euclidean algorithm" />
+          </div>
+          <div class="card-body">
+            <p class="type">Algorithm Rendering</p>
+            <h2>Euclidean algorithm</h2>
+            <p>A pseudocode example using the algorithm and algorithmic environments.</p>
+            <div class="links">
+              <a href="../algorithms/euclidean-algorithm.tex">Source</a>
+              <a href="https://latex2svg.com/latex-algorithm-renderer">Render Algorithms</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="preview">
+            <img src="../previews/theorem-proof.svg" alt="Rendered theorem and proof block" />
+          </div>
+          <div class="card-body">
+            <p class="type">Technical Text</p>
+            <h2>Theorem and proof block</h2>
+            <p>A structured text snippet with prose and inline mathematical notation.</p>
+            <div class="links">
+              <a href="../text/theorem-proof.tex">Source</a>
+              <a href="https://latex2svg.com/latex-text-renderer">Render Text</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="preview">
+            <img src="../previews/coordinate-plot.svg" alt="Rendered TikZ coordinate plot" />
+          </div>
+          <div class="card-body">
+            <p class="type">Diagram Export</p>
+            <h2>Coordinate plot</h2>
+            <p>A small TikZ plot with axes and a curve for math notes and slides.</p>
+            <div class="links">
+              <a href="../tikz/coordinate-plot.tex">Source</a>
+              <a href="https://latex2svg.com/guides/tikz-to-svg-for-web">TikZ SVG Guide</a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <footer>
+        <p>
+          Examples are maintained in
+          <a href="https://github.com/NaughtyWombat/latex2svg-examples">NaughtyWombat/latex2svg-examples</a>.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
