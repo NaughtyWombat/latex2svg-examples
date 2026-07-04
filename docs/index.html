@@ -12,13 +12,19 @@
     <style>
       :root {
         color-scheme: light;
-        --bg: #f7f9fb;
-        --panel: #ffffff;
-        --ink: #14171f;
-        --muted: #5a6475;
-        --line: #dce3ed;
-        --accent: #2454d6;
-        --accent-2: #0f8f74;
+        --surface: #f7f9fb;
+        --surface-lowest: #ffffff;
+        --surface-soft: #f4f8ff;
+        --ink: #111827;
+        --muted: #667085;
+        --outline: #d9e2ef;
+        --outline-soft: rgba(15, 23, 42, 0.1);
+        --primary: #2563eb;
+        --primary-strong: #1d4ed8;
+        --success: #0f8f74;
+        --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+        --font-headline: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
       }
 
       * {
@@ -27,270 +33,577 @@
 
       body {
         margin: 0;
-        background: var(--bg);
+        background: var(--surface);
         color: var(--ink);
-        font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
-        line-height: 1.55;
+        font-family: var(--font-headline);
+        line-height: 1.5;
       }
 
       a {
         color: inherit;
       }
 
+      .top-nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 40px;
+        border-bottom: 1px solid var(--outline-soft);
+        background: rgba(247, 249, 251, 0.9);
+        backdrop-filter: blur(14px);
+      }
+
+      .brand-lockup,
+      .nav-actions,
+      .brand-icon,
+      .button,
+      .pill,
+      .card-link {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .brand-lockup {
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .brand-icon {
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(37, 99, 235, 0.18);
+        border-radius: 10px;
+        color: var(--primary);
+        background: var(--surface-lowest);
+        font-weight: 900;
+      }
+
+      .brand-mark {
+        font-size: 1rem;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .nav-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      .nav-link {
+        min-height: 34px;
+        padding: 7px 12px;
+        border: 1px solid var(--outline-soft);
+        border-radius: 999px;
+        background: var(--surface-lowest);
+        color: var(--ink);
+        font-size: 0.82rem;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
       .shell {
         width: min(1120px, calc(100% - 32px));
         margin: 0 auto;
-        padding: 32px 0 56px;
+        padding: 24px 0 56px;
       }
 
       .hero {
-        padding: 48px 0 28px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+        gap: 12px;
+        padding: 12px;
+        border: 1px solid var(--outline-soft);
+        border-radius: 24px;
+        background: var(--surface-lowest);
+        box-shadow: var(--shadow);
       }
 
-      .eyebrow {
-        color: var(--accent);
-        font-size: 0.82rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
+      .hero-copy {
+        padding: 34px 30px;
+      }
+
+      .kicker {
         margin: 0 0 12px;
+        color: var(--primary);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
       }
 
       h1 {
-        font-size: clamp(2.2rem, 6vw, 4.8rem);
-        line-height: 0.95;
+        max-width: 760px;
         margin: 0;
-        max-width: 820px;
+        font-size: clamp(2rem, 5vw, 4.2rem);
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        line-height: 0.98;
       }
 
-      .hero p {
+      .hero-copy > p {
+        max-width: 660px;
+        margin: 18px 0 0;
         color: var(--muted);
-        font-size: 1.12rem;
-        max-width: 760px;
-        margin: 22px 0 0;
+        font-size: 1rem;
       }
 
       .actions {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-top: 24px;
+        margin-top: 22px;
       }
 
       .button {
-        align-items: center;
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 8px;
+        justify-content: center;
+        gap: 8px;
+        min-height: 40px;
+        padding: 9px 16px;
+        border: 1.5px solid var(--outline-soft);
+        border-radius: 999px;
+        background: var(--surface-lowest);
         color: var(--ink);
-        display: inline-flex;
-        font-weight: 700;
-        min-height: 42px;
-        padding: 9px 14px;
+        font-size: 0.84rem;
+        font-weight: 850;
         text-decoration: none;
       }
 
       .button.primary {
-        background: var(--accent);
-        border-color: var(--accent);
+        border-color: var(--primary);
+        background: var(--primary);
         color: #ffffff;
       }
 
-      .grid {
+      .workflow {
         display: grid;
-        gap: 18px;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        margin-top: 28px;
+        gap: 8px;
+        margin-top: 24px;
       }
 
-      .card {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        min-height: 100%;
-        overflow: hidden;
-      }
-
-      .preview {
-        align-items: center;
-        background: #fbfcfe;
-        border-bottom: 1px solid var(--line);
-        display: flex;
-        justify-content: center;
-        min-height: 170px;
-        padding: 24px;
-      }
-
-      .preview img {
-        height: auto;
-        max-height: 130px;
-        max-width: 100%;
-      }
-
-      .card-body {
-        padding: 18px;
-      }
-
-      .type {
-        color: var(--accent-2);
-        font-size: 0.78rem;
-        font-weight: 800;
-        letter-spacing: 0.06em;
-        margin: 0 0 8px;
+      .workflow-label {
+        color: var(--muted);
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
       }
 
-      h2 {
-        font-size: 1.15rem;
-        line-height: 1.2;
-        margin: 0;
-      }
-
-      .card p {
-        color: var(--muted);
-        margin: 10px 0 16px;
-      }
-
-      .links {
+      .pill-row {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
       }
 
-      .links a {
-        border: 1px solid var(--line);
+      .pill {
+        gap: 7px;
+        padding: 8px 11px;
+        border: 1px solid rgba(37, 99, 235, 0.13);
+        border-radius: 999px;
+        background: var(--surface-soft);
+        color: #344054;
+        font-size: 0.78rem;
+        font-weight: 850;
+      }
+
+      .preview-panel {
+        display: grid;
+        align-content: start;
+        gap: 12px;
+        padding: 20px;
+        border: 1px solid rgba(37, 99, 235, 0.15);
+        border-radius: 18px;
+        background: #f8faff;
+      }
+
+      .panel-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        color: var(--muted);
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 800;
+      }
+
+      .code-surface {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        overflow: hidden;
+        border: 1px solid rgba(37, 99, 235, 0.13);
+        border-radius: 12px;
+        background: var(--surface-lowest);
+      }
+
+      .line-number {
+        padding: 13px 11px;
+        background: rgba(37, 99, 235, 0.06);
+        color: #94a3b8;
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+      }
+
+      .code-surface code {
+        padding: 13px 14px;
+        color: var(--ink);
+        font-family: var(--font-mono);
+        font-size: 0.95rem;
+        white-space: pre-wrap;
+      }
+
+      .render-preview {
+        overflow: hidden;
+        border: 1px solid var(--outline-soft);
+        border-radius: 12px;
+        background: var(--surface-lowest);
+      }
+
+      .render-preview-title {
+        display: flex;
+        justify-content: space-between;
+        padding: 9px 12px;
+        border-bottom: 1px solid var(--outline-soft);
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .render-preview-title span:last-child {
+        color: var(--primary);
+      }
+
+      .render-preview-surface {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 104px;
+        padding: 18px;
+        background: #ffffff;
+      }
+
+      .render-preview-surface img {
+        width: 172px;
+        height: auto;
+      }
+
+      .section-heading {
+        margin: 32px 0 14px;
+      }
+
+      .section-heading h2 {
+        margin: 0;
+        font-size: 1.4rem;
+        letter-spacing: -0.02em;
+      }
+
+      .section-heading p {
+        max-width: 680px;
+        margin: 8px 0 0;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border: 1px solid var(--outline-soft);
+        border-radius: 14px;
+        background: var(--surface-lowest);
+        color: inherit;
+        text-decoration: none;
+        transition:
+          border-color 150ms ease,
+          box-shadow 150ms ease,
+          transform 150ms ease;
+      }
+
+      .card:hover {
+        border-color: var(--primary);
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .card-preview {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 158px;
+        padding: 20px;
+        border-bottom: 1px solid var(--outline-soft);
+        background: #fbfcfe;
+      }
+
+      .card-preview img {
+        max-width: 100%;
+        max-height: 118px;
+      }
+
+      .card-body {
+        display: grid;
+        gap: 8px;
+        padding: 18px;
+      }
+
+      .type {
+        margin: 0;
+        color: var(--success);
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .card h3 {
+        margin: 0;
+        font-size: 0.96rem;
+        line-height: 1.2;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.83rem;
+      }
+
+      .card-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 4px;
+      }
+
+      .card-link {
+        min-height: 30px;
+        padding: 6px 9px;
+        border: 1px solid var(--outline-soft);
         border-radius: 8px;
-        font-size: 0.92rem;
-        font-weight: 700;
-        padding: 7px 10px;
+        color: var(--primary);
+        font-size: 0.78rem;
+        font-weight: 850;
         text-decoration: none;
       }
 
       footer {
-        border-top: 1px solid var(--line);
-        color: var(--muted);
-        margin-top: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 36px;
         padding-top: 22px;
+        border-top: 1px solid var(--outline-soft);
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      footer a {
+        color: var(--primary);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      @media (max-width: 860px) {
+        .top-nav {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 12px 16px;
+        }
+
+        .nav-actions {
+          justify-content: flex-start;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy {
+          padding: 24px 18px 10px;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
   <body>
+    <nav class="top-nav" aria-label="Primary navigation">
+      <div class="brand-lockup">
+        <span class="brand-icon" aria-hidden="true">L2</span>
+        <a class="brand-mark" href="https://latex2svg.com">LaTeX2SVG</a>
+      </div>
+      <div class="nav-actions">
+        <a class="nav-link" href="https://latex2svg.com/latex-to-svg">Converter</a>
+        <a class="nav-link" href="https://latex2svg.com/guides/latex-to-svg">Guide</a>
+        <a class="nav-link" href="https://github.com/NaughtyWombat/latex2svg-examples">GitHub</a>
+      </div>
+    </nav>
+
     <main class="shell">
       <section class="hero">
-        <p class="eyebrow">LaTeX2SVG Examples</p>
-        <h1>LaTeX snippets rendered as clean SVG assets.</h1>
-        <p>
-          Browse copy-paste examples for equations, TikZ diagrams, tables, algorithms,
-          and theorem blocks. Use them with LaTeX2SVG to export SVG, PNG, or PDF.
-        </p>
-        <div class="actions">
-          <a class="button primary" href="https://latex2svg.com/latex-to-svg">Open LaTeX To SVG</a>
-          <a class="button" href="https://latex2svg.com/guides/latex-to-svg">Read The Guide</a>
-          <a class="button" href="https://github.com/NaughtyWombat/latex2svg-examples">View On GitHub</a>
+        <div class="hero-copy">
+          <p class="kicker">Example Snippets</p>
+          <h1>LaTeX examples ready for SVG export.</h1>
+          <p>
+            Copy focused equations, TikZ diagrams, tables, algorithms, and theorem blocks.
+            Render them with LaTeX2SVG, then export SVG, PNG, or PDF for docs, slides,
+            websites, and design tools.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="https://latex2svg.com/latex-to-svg">Open LaTeX To SVG</a>
+            <a class="button" href="https://latex2svg.com/editor">Open Editor</a>
+            <a class="button" href="https://github.com/NaughtyWombat/latex2svg-examples">View Repository</a>
+          </div>
+          <div class="workflow" aria-label="Supported workflows">
+            <span class="workflow-label">Workflows</span>
+            <div class="pill-row">
+              <span class="pill">SVG</span>
+              <span class="pill">PNG</span>
+              <span class="pill">PDF</span>
+              <span class="pill">TikZ</span>
+              <span class="pill">Tables</span>
+              <span class="pill">Algorithms</span>
+            </div>
+          </div>
         </div>
+
+        <aside class="preview-panel" aria-label="Rendered preview">
+          <div class="panel-header">
+            <span>example.tex</span>
+            <span>equation preset</span>
+          </div>
+          <div class="code-surface">
+            <span class="line-number">01</span>
+            <code>E = mc^2</code>
+          </div>
+          <div class="render-preview">
+            <div class="render-preview-title">
+              <span>Rendered SVG preview</span>
+              <span>SVG</span>
+            </div>
+            <div class="render-preview-surface">
+              <img src="previews/e-mc2.svg" alt="Rendered E equals mc squared equation" />
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section-heading">
+        <h2>Browse Examples</h2>
+        <p>
+          Each card links to the source snippet on GitHub and the matching LaTeX2SVG
+          workflow page.
+        </p>
       </section>
 
       <section class="grid" aria-label="Example gallery">
         <article class="card">
-          <div class="preview">
+          <div class="card-preview">
             <img src="previews/e-mc2.svg" alt="Rendered E equals mc squared equation" />
           </div>
           <div class="card-body">
             <p class="type">Equation To SVG</p>
-            <h2>Mass-energy equation</h2>
+            <h3>Mass-energy equation</h3>
             <p>A compact formula snippet for slides, notes, and documentation.</p>
-            <div class="links">
-              <a href="https://github.com/NaughtyWombat/latex2svg-examples/blob/main/equations/e-mc2.tex">Source</a>
-              <a href="https://latex2svg.com/equation-to-svg">Render Equations</a>
+            <div class="card-links">
+              <a class="card-link" href="https://github.com/NaughtyWombat/latex2svg-examples/blob/main/equations/e-mc2.tex">Source</a>
+              <a class="card-link" href="https://latex2svg.com/equation-to-svg">Render Equations</a>
             </div>
           </div>
         </article>
 
         <article class="card">
-          <div class="preview">
+          <div class="card-preview">
             <img src="previews/flowchart.svg" alt="Rendered TikZ flowchart" />
           </div>
           <div class="card-body">
             <p class="type">TikZ To SVG</p>
-            <h2>Flowchart</h2>
+            <h3>Flowchart</h3>
             <p>A focused TikZ process diagram for documentation and technical figures.</p>
-            <div class="links">
-              <a href="https://github.com/NaughtyWombat/latex2svg-examples/blob/main/tikz/flowchart.tex">Source</a>
-              <a href="https://latex2svg.com/tikz-to-svg">Render TikZ</a>
+            <div class="card-links">
+              <a class="card-link" href="https://github.com/NaughtyWombat/latex2svg-examples/blob/main/tikz/flowchart.tex">Source</a>
+              <a class="card-link" href="https://latex2svg.com/tikz-to-svg">Render TikZ</a>
             </div>
           </div>
         </article>
 
         <article class="card">
-          <div class="preview">
-            <img src="previews/booktabs-comparison.svg" alt="Rendered booktabs table" />
+          <div class="card-preview">
+            <img src="previews/booktabs-comparison.svg" alt="Rendered booktabs comparison table" />
           </div>
           <div class="card-body">
             <p class="type">Table To SVG</p>
-            <h2>Booktabs comparison table</h2>
+            <h3>Booktabs comparison table</h3>
             <p>A publication-style table snippet for reports and research figures.</p>
-            <div class="links">
-              <a href="https://github.com/NaughtyWombat/latex2svg-examples/blob/main/tables/booktabs-comparison.tex">Source</a>
-              <a href="https://latex2svg.com/latex-table-to-svg">Render Tables</a>
+            <div class="card-links">
+              <a class="card-link" href="https://github.com/NaughtyWombat/latex2svg-examples/blob/main/tables/booktabs-comparison.tex">Source</a>
+              <a class="card-link" href="https://latex2svg.com/latex-table-to-svg">Render Tables</a>
             </div>
           </div>
         </article>
 
         <article class="card">
-          <div class="preview">
+          <div class="card-preview">
             <img src="previews/euclidean-algorithm.svg" alt="Rendered Euclidean algorithm" />
           </div>
           <div class="card-body">
             <p class="type">Algorithm Rendering</p>
-            <h2>Euclidean algorithm</h2>
+            <h3>Euclidean algorithm</h3>
             <p>A pseudocode example using the algorithm and algorithmic environments.</p>
-            <div class="links">
-              <a href="https://github.com/NaughtyWombat/latex2svg-examples/blob/main/algorithms/euclidean-algorithm.tex">Source</a>
-              <a href="https://latex2svg.com/latex-algorithm-renderer">Render Algorithms</a>
+            <div class="card-links">
+              <a class="card-link" href="https://github.com/NaughtyWombat/latex2svg-examples/blob/main/algorithms/euclidean-algorithm.tex">Source</a>
+              <a class="card-link" href="https://latex2svg.com/latex-algorithm-renderer">Render Algorithms</a>
             </div>
           </div>
         </article>
 
         <article class="card">
-          <div class="preview">
+          <div class="card-preview">
             <img src="previews/theorem-proof.svg" alt="Rendered theorem and proof block" />
           </div>
           <div class="card-body">
             <p class="type">Technical Text</p>
-            <h2>Theorem and proof block</h2>
+            <h3>Theorem and proof block</h3>
             <p>A structured text snippet with prose and inline mathematical notation.</p>
-            <div class="links">
-              <a href="https://github.com/NaughtyWombat/latex2svg-examples/blob/main/text/theorem-proof.tex">Source</a>
-              <a href="https://latex2svg.com/latex-text-renderer">Render Text</a>
+            <div class="card-links">
+              <a class="card-link" href="https://github.com/NaughtyWombat/latex2svg-examples/blob/main/text/theorem-proof.tex">Source</a>
+              <a class="card-link" href="https://latex2svg.com/latex-text-renderer">Render Text</a>
             </div>
           </div>
         </article>
 
         <article class="card">
-          <div class="preview">
+          <div class="card-preview">
             <img src="previews/coordinate-plot.svg" alt="Rendered TikZ coordinate plot" />
           </div>
           <div class="card-body">
             <p class="type">Diagram Export</p>
-            <h2>Coordinate plot</h2>
+            <h3>Coordinate plot</h3>
             <p>A small TikZ plot with axes and a curve for math notes and slides.</p>
-            <div class="links">
-              <a href="https://github.com/NaughtyWombat/latex2svg-examples/blob/main/tikz/coordinate-plot.tex">Source</a>
-              <a href="https://latex2svg.com/guides/tikz-to-svg-for-web">TikZ SVG Guide</a>
+            <div class="card-links">
+              <a class="card-link" href="https://github.com/NaughtyWombat/latex2svg-examples/blob/main/tikz/coordinate-plot.tex">Source</a>
+              <a class="card-link" href="https://latex2svg.com/guides/tikz-to-svg-for-web">TikZ SVG Guide</a>
             </div>
           </div>
         </article>
       </section>
 
       <footer>
-        <p>
-          Examples are maintained in
-          <a href="https://github.com/NaughtyWombat/latex2svg-examples">NaughtyWombat/latex2svg-examples</a>.
-        </p>
+        <span>Examples maintained in <a href="https://github.com/NaughtyWombat/latex2svg-examples">NaughtyWombat/latex2svg-examples</a>.</span>
+        <span><a href="https://latex2svg.com">Back to LaTeX2SVG</a></span>
       </footer>
     </main>
   </body>
