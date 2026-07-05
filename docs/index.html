@@ -110,16 +110,17 @@
         padding: 18px 0 56px;
       }
 
-      .hero {
+      .repo-panel {
         display: grid;
         gap: 18px;
+        margin-top: 28px;
         padding: 34px;
         border: 1px solid var(--outline-soft);
         border-radius: 18px;
         background: var(--surface-lowest);
       }
 
-      .hero-copy {
+      .repo-panel-copy {
         padding: 0;
       }
 
@@ -141,7 +142,7 @@
         line-height: 1.02;
       }
 
-      .hero-copy > p {
+      .repo-panel-copy > p {
         max-width: 660px;
         margin: 18px 0 0;
         color: var(--muted);
@@ -364,7 +365,7 @@
           justify-content: flex-start;
         }
 
-        .hero {
+        .repo-panel {
           padding: 24px 18px;
         }
 
@@ -401,41 +402,6 @@
     </header>
 
     <main class="shell">
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="kicker">Public Example Repository</p>
-          <h1>Copy-paste LaTeX snippets with rendered SVG previews.</h1>
-          <p>
-            A small public collection of equations, TikZ diagrams, tables, algorithms,
-            and theorem blocks for testing LaTeX2SVG exports. Browse the rendered preview,
-            open the source, then render or adapt the snippet for your own work.
-          </p>
-          <div class="actions">
-            <a class="button primary" href="https://github.com/NaughtyWombat/latex2svg-examples">View Repository</a>
-            <a class="button" href="https://latex2svg.com/latex-to-svg">Render Online</a>
-            <a class="button" href="https://latex2svg.com/guides/latex-to-svg">Conversion Guide</a>
-          </div>
-          <div class="workflow" aria-label="Repository contents">
-            <div class="metric">
-              <strong>5</strong>
-              <span>example categories</span>
-            </div>
-            <div class="metric">
-              <strong>11</strong>
-              <span>source snippets</span>
-            </div>
-            <div class="metric">
-              <strong>SVG</strong>
-              <span>rendered previews</span>
-            </div>
-            <div class="metric">
-              <strong>MIT</strong>
-              <span>reusable examples</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section class="section-heading">
         <h2>Browse Examples</h2>
         <p>
@@ -534,6 +500,41 @@
             </div>
           </div>
         </article>
+      </section>
+
+      <section class="repo-panel">
+        <div class="repo-panel-copy">
+          <p class="kicker">Public Example Repository</p>
+          <h1>Copy-paste LaTeX snippets with rendered SVG previews.</h1>
+          <p>
+            A small public collection of equations, TikZ diagrams, tables, algorithms,
+            and theorem blocks for testing LaTeX2SVG exports. Open the source, render it
+            online, or adapt the snippet for your own work.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="https://github.com/NaughtyWombat/latex2svg-examples">View Repository</a>
+            <a class="button" href="https://latex2svg.com/latex-to-svg">Render Online</a>
+            <a class="button" href="https://latex2svg.com/guides/latex-to-svg">Conversion Guide</a>
+          </div>
+          <div class="workflow" aria-label="Repository contents">
+            <div class="metric">
+              <strong>5</strong>
+              <span>example categories</span>
+            </div>
+            <div class="metric">
+              <strong>11</strong>
+              <span>source snippets</span>
+            </div>
+            <div class="metric">
+              <strong>SVG</strong>
+              <span>rendered previews</span>
+            </div>
+            <div class="metric">
+              <strong>MIT</strong>
+              <span>reusable examples</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <footer>
