@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://naughtywombat.github.io/latex2svg-examples/sitemap.xml
